@@ -1,6 +1,4 @@
-image:
-  file: .gitpod.Dockerfile
+image: gitpod/workspace-full
 
 tasks:
-  - init: 'echo "TODO: Replace with init/build command"'
-    command: 'echo "TODO: Replace with command to start project"'
+- init: pip3 install -r ./requirements.txt
