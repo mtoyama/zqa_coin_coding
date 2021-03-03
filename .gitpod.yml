@@ -1,0 +1,4 @@
+image: gitpod/workspace-full
+
+tasks:
+- init: pip3 install -r ./requirements.txt
