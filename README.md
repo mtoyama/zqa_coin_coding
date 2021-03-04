@@ -36,6 +36,7 @@ CoinAPI's free key has many futures but you are limited to 100 requests per day.
 You can sign up for a free API key here: https://www.coinapi.io/pricing?apikey
 
 To get started, see the following example. The API key is passed to the script as a command line parameter.
+
 ```
 from coinapi_rest_v1.restapi import CoinAPIv1
 test_key = sys.argv[1]
@@ -62,6 +63,3 @@ nomics = Nomics("This-Is-A-Fake-Key-123")
 More information:
 - Python library: https://github.com/TaylorFacen/nomics-python
 - API Docs: https://nomics.com/docs/
-
-
-
