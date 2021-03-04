@@ -12,7 +12,7 @@ Slack Channel (use personal account): https://app.slack.com/client/T01PXJSQ6J2/C
 
 ### GitPod Setup
 
-Click the GitPod badge at the top of the ReadMe to launch a virtual environmen for coding. You will enter into a browser-based VSCode instance. All requirements for the project will be automatically installed and available to your scripts.
+Click the GitPod badge at the top of the Readme to launch a virtual environment for coding. You will enter into a browser-based VSCode instance. All requirements for the project will be automatically installed and available to your scripts.
 
 ### Manual Setup
 
@@ -22,21 +22,26 @@ Click the GitPod badge at the top of the ReadMe to launch a virtual environmen f
 
 ### Directory structure
 The repository has been structured so individuals can create their own scripts without clutter. For small scripts please follow the below structure:
+
 ```users/your_username/...```
+
 You may want to create subfolders if you plan on maintaining several projects.
+
+We will create directories at the root or in another subfolder when starting group projects.
 
 ## APIs
 
 Python packages for CoinAPI and Nomics are installed automatically when running the setup steps.
 
+Note: For security reasons, do not store your API key in code you push to github.
+
 ### CoinAPI
 
-CoinAPI's free key has many futures but you are limited to 100 requests per day.
+CoinAPI's free key has many features but you are limited to 100 requests per day.
 
 You can sign up for a free API key here: https://www.coinapi.io/pricing?apikey
 
 To get started, see the following example. The API key is passed to the script as a command line parameter.
-
 ```
 from coinapi_rest_v1.restapi import CoinAPIv1
 test_key = sys.argv[1]
