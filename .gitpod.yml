@@ -2,3 +2,8 @@ image: gitpod/workspace-full
 
 tasks:
 - init: pip3 install -r ./requirements.txt
+
+vscode:
+  extensions:
+    - ms-python.python@2020.10.332292344:5ctthQ25Qni5/aAuOIUTYQ==
+    - magicstack.magicpython@1.1.1:Q+4h8/d9eu9kME/nNfIDlg==
