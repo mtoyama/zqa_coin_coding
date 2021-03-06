@@ -6,10 +6,11 @@ from datetime import datetime, timedelta
 import urllib
 
 from coinapi_rest_v1.restapi import CoinAPIv1
-
+from patch_restapi import ohlcv_historical_data_by_asset
 import config
 
 api = CoinAPIv1(config.API_KEY)
+api.ohlcv_historical_data_by_asset = ohlcv_historical_data_by_asset
 
 def coinapi_get_active_crypto_assets():
     assets = api.metadata_list_assets()
@@ -22,18 +23,27 @@ def coinapi_get_active_crypto_assets():
         json.dump(assets_filtered, f, indent=4)
     return config.ASSETS
 
-def coinapi_get_historical_data_days(asset_list, days):
-    time_start = datetime.now().date() - timedelta(days=days)
+def coinapi_get_historical_data_days(asset_base_quote_list, days):
+    time_end = datetime.now().date()
+    time_start = time_end - timedelta(days=days)
+
     historical_data = {}
-    for asset in asset_list:
+    historical_data['metadata'] = {
+        'time_start' : time_start.isoformat(),
+        'time_end' : time_end.isoformat()
+    }
+    for asset_base, asset_quote in asset_base_quote_list:
         time.sleep(1)
-        print(asset)
+        print(asset_base, asset_quote)
         try:
-            data = api.ohlcv_historical_data(
-                asset, 
+            data = api.ohlcv_historical_data_by_asset(
+                api,
+                asset_base,
+                asset_quote,
                 {'period_id': '1DAY', 'time_start': time_start.isoformat()}
             )
-            historical_data[asset] = data
+            print(data)
+            historical_data[asset_base + "_" + asset_quote] = data
         except urllib.error.HTTPError as e:
             print(e.read().decode())
             continue
