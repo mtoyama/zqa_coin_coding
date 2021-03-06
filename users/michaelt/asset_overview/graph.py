@@ -60,12 +60,12 @@ def main(args):
             print(title)
             for asset_data in data[key]:
                 y.append(
-                    (asset_data['price_open'] - asset_data['price_close']) / asset_data['price_open']
+                    (asset_data['price_open'] - asset_data['price_close']) \
+                        / asset_data['price_open']
                 )
             p.line(x, y, legend_label = title, line_width=2, color=next(colors))
     
     show(p)
-
 
 if __name__ == "__main__":
     main(parse_args())
