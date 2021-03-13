@@ -6,11 +6,12 @@ from datetime import datetime, timedelta
 import urllib
 
 from coinapi_rest_v1.restapi import CoinAPIv1
-from patch_restapi import ohlcv_historical_data_by_asset
-import config
+from api_patches import coinapi_patch
+
+from users.michaelt.asset_overview import config
 
 api = CoinAPIv1(config.API_KEY)
-api.ohlcv_historical_data_by_asset = ohlcv_historical_data_by_asset
+coinapi_patch.apply_patch(api)
 
 def coinapi_get_active_crypto_assets():
     assets = api.metadata_list_assets()
