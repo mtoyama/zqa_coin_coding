@@ -1,6 +1,5 @@
 from coinapi_rest_v1 import restapi
 
-
 # Get API data by asset pair rather than symbol string.
 # REST: 
 # GET /v1/ohlcv/{asset_id_base}/{asset_id_quote}/history?period_id={period_id}&time_start={time_start}&time_end={time_end}&limit={limit}&include_empty_items={include_empty_items}
@@ -14,19 +13,17 @@ class OHLCVHistoricalDataRequestByAsset:
     def endpoint(self):
         return f'/ohlcv/{self.asset_id_base}/{self.asset_id_quote}/history'
 
-def ohlcv_historical_data_by_asset(self,
-                                   asset_id_base,
-                                   asset_id_quote,
-                                   query_parameters):
-    request = OHLCVHistoricalDataRequestByAsset(
-        asset_id_base,
-        asset_id_quote,
-        query_parameters
-    )
-    client = self.client_class(request.endpoint(),
-                                self.headers,
-                                request.query_parameters)
-    return client.perform()
-
-def apply_patch(coinapi_object):
-    coinapi_object.ohlcv_historical_data_by_asset = ohlcv_historical_data_by_asset
+class CoinAPIv1Patched(restapi.CoinAPIv1):
+    def ohlcv_historical_data_by_asset(self,
+                                    asset_id_base,
+                                    asset_id_quote,
+                                    query_parameters):
+        request = OHLCVHistoricalDataRequestByAsset(
+            asset_id_base,
+            asset_id_quote,
+            query_parameters
+        )
+        client = self.client_class(request.endpoint(),
+                                    self.headers,
+                                    request.query_parameters)
+        return client.perform()

@@ -10,19 +10,15 @@ from bokeh.plotting import figure, show
 from bokeh.palettes import Dark2_5 as palette
 from bokeh.io import curdoc
 
-from users.michaelt.asset_overview import config
+from users.michaelt.asset_overview import config, get_data
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--API_KEY", required=True)
     parser.add_argument("--refresh_assets", action='store_true')
     parser.add_argument("--refresh_history", action='store_true')
     return parser.parse_args()
 
 def main(args):
-    config.API_KEY = args.API_KEY
-    from users.michaelt.asset_overview import get_data
-
     if args.refresh_assets:
         get_data.coinapi_get_active_crypto_assets()
     if args.refresh_history:

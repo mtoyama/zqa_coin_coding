@@ -1,17 +1,16 @@
 import sys
 import json
+import os
 import time
 from operator import itemgetter
 from datetime import datetime, timedelta
 import urllib
 
-from coinapi_rest_v1.restapi import CoinAPIv1
-from api_patches import coinapi_patch
+from api_patches.coinapi_patch import CoinAPIv1Patched
 
 from users.michaelt.asset_overview import config
 
-api = CoinAPIv1(config.API_KEY)
-coinapi_patch.apply_patch(api)
+api = CoinAPIv1Patched(os.environ['COINAPI_API_KEY'])
 
 def coinapi_get_active_crypto_assets():
     assets = api.metadata_list_assets()
@@ -38,7 +37,6 @@ def coinapi_get_historical_data_days(asset_base_quote_list, days):
         print(asset_base, asset_quote)
         try:
             data = api.ohlcv_historical_data_by_asset(
-                api,
                 asset_base,
                 asset_quote,
                 {'period_id': '1DAY', 'time_start': time_start.isoformat()}
