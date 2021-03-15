@@ -3,3 +3,4 @@ coinapi_rest_v1
 nomics-python
 bokeh
 python-twitter
+pytz
