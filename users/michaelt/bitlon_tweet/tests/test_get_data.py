@@ -5,7 +5,8 @@ import pytz
 
 import twitter
 
-from users.michaelt.bitlon_tweet import get_data, api_patch
+from users.michaelt.bitlon_tweet import get_data
+from api_patches.coinapi_patch import CoinAPIv1Patched
 
 @pytest.fixture
 def twitter_api():
@@ -18,7 +19,7 @@ def twitter_api():
 
 @pytest.fixture
 def coinapi_api():
-    api = api_patch.CoinAPIv1Patched(os.environ['COINAPI_API_KEY'])
+    api = CoinAPIv1Patched(os.environ['COINAPI_API_KEY'])
     return api
 
 def test_get_user_latest_tweets(twitter_api):
