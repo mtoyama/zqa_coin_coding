@@ -11,6 +11,7 @@ def graph(bitcoin_data, tweet_data):
     p = figure(
         title='BitCoin x Elon Musk',
         x_axis_label='date',
+        x_axis_type='datetime',
         y_axis_label='Bitcoin Price'
     )
 
@@ -26,7 +27,7 @@ def graph(bitcoin_data, tweet_data):
     y_tweet = [1 for x in range(0, len(tweet_data))]
     desc_tweet = []
     for tweet in tweet_data:
-        x_tweet.append(tweet.created_at)
+        x_tweet.append(parse(tweet.created_at))
         desc_tweet.append(tweet.text)
         tweet_line = Span(location=tweet.created_at,
                           dimension='height', line_color = 'deepskyblue',

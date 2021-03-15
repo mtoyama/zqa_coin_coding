@@ -17,7 +17,6 @@ def get_user_latest_tweets(api, user, since_date):
     for tweet in tweets:
         created_at = parse(tweet.created_at)
         if created_at >= since_date:
-            tweet.created_at = created_at
             tweets_out.append(tweet)
         else:
             break

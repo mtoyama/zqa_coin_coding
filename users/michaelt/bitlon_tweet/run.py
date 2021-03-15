@@ -23,7 +23,7 @@ def main():
         utc.localize(datetime.now() - timedelta(days=1))
     )
     
-    bitcoin_data = get_data.get_latest_btc_prices(coinapi, "1MIN", 1440)
+    bitcoin_data = get_data.get_latest_btc_prices(coinapi, "10MIN", 144)
 
     report.graph(bitcoin_data, tweets)
 
