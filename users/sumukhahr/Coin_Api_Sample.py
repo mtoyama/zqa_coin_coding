@@ -23,3 +23,11 @@ assets = resp.json()
 
 print(f"There are {len(assets)} assets")
 assets[:3]
+
+resp = requests.get('https://rest.coinapi.io/v1/exchanges', headers=headers)
+
+exchanges = resp.json()
+
+print(f"There are {len(exchanges)} exchanges")
+
+exchanges[:2]
