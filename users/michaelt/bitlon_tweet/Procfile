@@ -1,0 +1,1 @@
+web: bokeh serve --port=$PORT --allow-websocket-origin=fast-ridge-94189.herokuapp.com --address=0.0.0.0 —-use-xheaders run.py
