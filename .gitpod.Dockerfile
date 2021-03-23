@@ -1,5 +1,4 @@
 FROM gitpod/workspace-full
 
-RUN sudo apt-get update
-RUN sudo apt -y install snapd
-RUN sudo snap install heroku --classic
+USER gitpod
+RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
