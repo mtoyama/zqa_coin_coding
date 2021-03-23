@@ -2,6 +2,7 @@ import os
 import argparse
 from datetime import datetime, timedelta
 import pickle
+import statistics
 
 import twitter
 import pytz
@@ -52,7 +53,7 @@ def main(args):
 
     graph(bitcoin_data, tweets)
 
-def graph(bitcoin_data, tweets):
+def graph(bitcoin_data, tweet_data):
     bitcoin_time_array = [parse_and_localize_utc(x["time_period_start"]) for x in bitcoin_data]
     bitcoin_price_array = [y["price_close"] for y in bitcoin_data]
     bitcoin_min = min(bitcoin_price_array)
