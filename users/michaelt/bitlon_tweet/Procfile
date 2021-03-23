@@ -1,1 +1,1 @@
-web: bokeh serve --port=$PORT --allow-websocket-origin=shrouded-falls-60585.herokuapp.com --address=0.0.0.0 run.py —-use-xheaders 
+web: bokeh serve --port=$PORT --address=0.0.0.0 --allow-websocket-origin=shrouded-falls-60585.herokuapp.com --use_xheaders run.py 
