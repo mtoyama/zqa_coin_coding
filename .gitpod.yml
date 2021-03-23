@@ -1,9 +1,7 @@
-image: gitpod/workspace-full
+image: .gitpod.Dockerfile
 
 tasks:
 - init: pip3 install -r ./requirements.txt
-- init: sudo apt install snapd
-- init: sudo snap install heroku --classic
 
 vscode:
   extensions:
