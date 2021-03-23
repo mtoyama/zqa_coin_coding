@@ -4,25 +4,28 @@ from datetime import datetime, timedelta
 import pickle
 import statistics
 from random import random
+from dateutil.parser import parse
 
 import twitter
 import pytz
 
 from bokeh.plotting import curdoc
-import scheduler, report, get_data
-from coinapi_patch import CoinAPIv1Patched
-
-
 from bokeh.plotting import figure, show
 from bokeh.palettes import Dark2_5 as palette
 from bokeh.io import curdoc
 from bokeh.models import Span, HoverTool, ColumnDataSource, LinearAxis, Range1d, Button
 from bokeh.palettes import RdYlBu3
 
-from utils import parse_and_localize_utc
+TWEET_DATA = "./tweets.p"
+BITCOIN_DATA = "./bitcoin_data.p"
 
-TWEET_DATA = "./data/tweets.p"
-BITCOIN_DATA = "./data/bitcoin_data.p"
+def parse_and_localize_utc(date_string):
+    utc = pytz.UTC
+    parsed = parse(date_string)
+    if parsed.tzinfo is not None and parsed.tzinfo.utcoffset(parsed) is not None:
+        return parsed
+    else:
+        return utc.localize(parsed)
 
 tweet_data = pickle.load(open(TWEET_DATA, 'rb'))
 bitcoin_data = pickle.load(open(BITCOIN_DATA, 'rb'))
@@ -37,7 +40,9 @@ p = figure(
     x_axis_label='date',
     x_axis_type='datetime',
     y_axis_label='Price (USD)',
-    y_range=(round(bitcoin_min, -4), round(bitcoin_max, -4))
+    y_range=(round(bitcoin_min, -4), round(bitcoin_max, -4)),
+    plot_width=1200,
+    plot_height=600
 )
 
 p.line(

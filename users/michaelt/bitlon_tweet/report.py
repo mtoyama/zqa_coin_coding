@@ -7,7 +7,7 @@ from bokeh.palettes import Dark2_5 as palette
 from bokeh.io import curdoc
 from bokeh.models import Span, HoverTool, ColumnDataSource, LinearAxis, Range1d
 
-from utils import parse_and_localize_utc
+from users.michaelt.bitlon_tweet.utils import parse_and_localize_utc
 
 def graph(bitcoin_data, tweet_data):
     bitcoin_time_array = [parse_and_localize_utc(x["time_period_start"]) for x in bitcoin_data]
