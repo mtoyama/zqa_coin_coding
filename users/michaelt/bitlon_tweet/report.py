@@ -68,5 +68,4 @@ def graph(bitcoin_data, tweet_data):
         tooltips = [("@elonmusk:", "@desc")],
     )
     p.tools.append(tweet_hovertool)
-
-    show(p)
+    curdoc().add_root(p)

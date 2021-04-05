@@ -1,0 +1,1 @@
+web: bokeh serve --port=$PORT --address=0.0.0.0 --log-level debug --allow-websocket-origin=cryptic-wildwood-73826.herokuapp.com --use-xheaders run.py 

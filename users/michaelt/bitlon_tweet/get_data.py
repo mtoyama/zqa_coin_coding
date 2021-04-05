@@ -11,7 +11,7 @@ def get_user_latest_tweets(api, user, since_date):
         screen_name=user,
         include_rts=False,
         exclude_replies=True,
-        count=50)
+        count=100)
 
     tweets_out = []
     for tweet in tweets:

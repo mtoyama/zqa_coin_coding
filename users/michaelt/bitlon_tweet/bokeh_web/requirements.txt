@@ -1,0 +1,5 @@
+pytest
+coinapi_rest_v1
+bokeh
+python-twitter
+pytz
