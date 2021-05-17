@@ -4,3 +4,5 @@ nomics-python
 bokeh
 python-twitter
 pytz
+pandas
+matplotlib
