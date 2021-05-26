@@ -21,20 +21,24 @@ df_test['asset_id_quote'] == 'USD'
 
 AB = df_test['asset_id_quote'] == 'USD'
 BC = df_test['asset_id_quote'] == 'DOGE'
-CD = df_test['asset_id_quote'] == 'GOLD'
+CD = df_test['asset_id_quote'] == 'BCH'
 DE = df_test['asset_id_quote'] == 'ETH'
 EF = df_test['asset_id_quote'] == 'XRP'
-print (df_test[AB|BC|CD|DE|EF])
+df_for_chart = df_test[AB|BC|CD|DE|EF].copy()
+df_for_chart.rate = df_for_chart.rate.round(2)
 
-plt.bar(df_test['asset_id_quote'], df_test['rate'])
-plt.show()
+plt.bar(df_for_chart['asset_id_quote'], df_for_chart['rate'])
+plt.savefig('plot.png')
+print (df_for_chart)
 
+# df_for_chart = df_for_chart[df_for_chart.asset_id_quote != 'DOGE']
+# plt.bar(df_for_chart['asset_id_quote'], df_for_chart['rate'])
+# plt.savefig('plot2.png')
 
 # print (type)
 # print (type(df_test['asset_id_quote']))
 # print (df_test)
 # exchanges = api.metadata_list_exchanges()
-
 
 # print('Exchanges')
 # for exchange in exchanges:
